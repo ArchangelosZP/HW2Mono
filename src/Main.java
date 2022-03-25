@@ -1,3 +1,4 @@
+import java.math.BigDecimal;
 import java.util.Scanner;
 
 public class Main {
@@ -7,7 +8,10 @@ public class Main {
         int number2 = 0;
         float f1 = 0;
         float f2 = 0;
-        float res = 0;
+        double res = 0;
+        double res1 = 0;
+        double res5 = 0;
+        double res10 = 0;
         String s1;
         String s2;
 
@@ -60,9 +64,9 @@ public class Main {
         }
         res = (number1 + number2 + f1 + f2);
         if (res % 1 == 0) {
-            System.out.println("Спасибо! Сумма введенных чисел: " + Math.round(res) +"\n");
+            System.out.println("Спасибо! Сумма введенных чисел: " + Math.round(res) + "\n");
         } else {
-            System.out.println("Спасибо! Сумма введенных чисел: " +res+"\n");
+            System.out.println("Спасибо! Сумма введенных чисел: " + res + "\n");
         }
 
         Scanner sc1 = new Scanner(System.in);
@@ -91,7 +95,22 @@ public class Main {
             }
         }
 
-        System.out.println(s1 +" через год по ставке 20% ваш депозит будет равен: " + (number2 + f2)*1.2);
+        float rate = 20;
+        res = number2 + f2;
+        res1 = Math.round(res * (1+rate/100) * 100.0) / 100.0;
+        res5 = res;
+        for (int i = 1; i < 6; i++) {
+            res5 = Math.round(res5 * (1+rate/100) * 100.0) / 100.0;
+        }
+        res10 = res;
+        for (int i = 1; i < 11; i++) {
+            res10 = Math.round(res10 * (1+rate/100) * 100.0) / 100.0;
+        }
+
+        System.out.println(s1 + " по ставке "+rate+"% с ежегодной капитализацией сумма депозита будет");
+        System.out.println("через год:      " + res1);
+        System.out.println("через 5 лет:    " + res5);
+        System.out.println("через 10 лет:   " + res10);
 
         sc1.close();
 
